@@ -1,20 +1,25 @@
-import "./App.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Card from "./components/Card";
+import "./App.scss";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Card from "./components/Card/Card";
 import LearnedBtn from "./components/LearnedBtn";
 import RepeatBtn from "./components/RepeatBtn";
-import WordTable from "./components/WordTable";
+import WordTable from "./components/WordTable/WordTable";
+import dataArray from "./testWords.json";
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
-      <Card></Card>
-      <RepeatBtn></RepeatBtn>
-      <LearnedBtn></LearnedBtn>
-
-      <WordTable></WordTable>
+      <main>
+        <Card
+          word={dataArray[0].english}
+          pronunciation={dataArray[0].transcription}
+          translation={dataArray[0].russian}></Card>
+        <RepeatBtn></RepeatBtn>
+        <LearnedBtn></LearnedBtn>
+        <WordTable></WordTable>
+      </main>
       <Footer></Footer>
     </div>
   );

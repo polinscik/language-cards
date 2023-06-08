@@ -1,4 +1,4 @@
-const dataArray = [];
+import dataArray from "../../testWords.json";
 
 
 function WordTable(){
@@ -14,10 +14,10 @@ function WordTable(){
                 {
                     dataArray.map((wordInfo)=>
                     <tr>
-                        <td>{wordInfo.word}</td>
-                        <td>{wordInfo.pronunciation}</td>
-                        <td>{wordInfo.translation}</td>
-                        <td>{wordInfo.theme}</td>
+                        <td>{wordInfo.english}</td>
+                        <td>{wordInfo.transcription}</td>
+                        <td>{wordInfo.russian}</td>
+                        <td>{wordInfo.tags}</td>
                     </tr>)
                 }
             </table>

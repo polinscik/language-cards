@@ -1,0 +1,22 @@
+@import "../../colors";
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: var(--header-bg);
+  align-self: stretch;
+}
+
+.title {
+}
+
+.nav {
+  margin-top: 1.5em;
+  list-style-type: none;
+  display: flex;
+  column-gap: 1em;
+}
+
+.nav-item {
+}

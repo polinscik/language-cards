@@ -3,7 +3,7 @@ function Footer(){
     const date = new Date();
     return (
         <footer className="footer">
-            <p className="footer_credits">Made by *me* in {date.getFullYear()}</p>
+            <p className="footer_credits">Made by *me*, {date.getFullYear()}</p>
         </footer>
     )
 }
