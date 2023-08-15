@@ -6,6 +6,7 @@
   justify-content: space-evenly;
   background-color: var(--header-bg);
   align-self: stretch;
+  padding: 2vmin 0;
 }
 
 .title {
@@ -16,7 +17,16 @@
   list-style-type: none;
   display: flex;
   column-gap: 1em;
+  align-items: flex-start;
 }
 
 .nav-item {
+  margin-top: 5px;
+  padding: 1vmin;
+  &:hover {
+    background-color: var(--light-color);
+    color: var(--backgr-color);
+
+    border-radius: 10px;
+  }
 }

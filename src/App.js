@@ -11,11 +11,12 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
-      <main>
+      <main className="main">
         <Card
           word={dataArray[0].english}
           pronunciation={dataArray[0].transcription}
-          translation={dataArray[0].russian}></Card>
+          translation={dataArray[0].russian}
+          tags={dataArray[0].tags}></Card>
         <RepeatBtn></RepeatBtn>
         <LearnedBtn></LearnedBtn>
         <WordTable></WordTable>
