@@ -1,0 +1,24 @@
+.btn {
+  color: var(--light-color);
+  font-family: inherit;
+  border-width: 6px;
+  border-style: solid;
+  padding: 0.5vmin;
+  font-size: large;
+}
+
+.learned-btn {
+  background-color: var(--custom-green);
+  border-color: var(--light-green);
+  &:hover {
+    background-color: var(--light-green);
+  }
+}
+
+.repeat-btn {
+  background-color: var(--custom-red);
+  border-color: var(--light-red);
+  &:hover {
+    background-color: var(--light-red);
+  }
+}

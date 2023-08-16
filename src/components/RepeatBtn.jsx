@@ -1,7 +1,6 @@
-function RepeatBtn(){
-    return(
-        <button className="repeat-btn">Не помню</button>
-    )
+import "./BtnStyles.scss";
+function RepeatBtn() {
+  return <button className="btn repeat-btn">Не помню</button>;
 }
 
 export default RepeatBtn;

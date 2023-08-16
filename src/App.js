@@ -17,8 +17,10 @@ function App() {
           pronunciation={dataArray[0].transcription}
           translation={dataArray[0].russian}
           tags={dataArray[0].tags}></Card>
-        <RepeatBtn></RepeatBtn>
-        <LearnedBtn></LearnedBtn>
+        <div className="btn-container">
+          <LearnedBtn></LearnedBtn>
+          <RepeatBtn></RepeatBtn>
+        </div>
         <WordTable></WordTable>
       </main>
       <Footer></Footer>
