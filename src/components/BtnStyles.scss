@@ -1,13 +1,14 @@
 .btn {
-  color: var(--light-color);
   font-family: inherit;
-  border-width: 6px;
+
   border-style: solid;
   padding: 0.5vmin;
   font-size: large;
 }
 
 .learned-btn {
+  color: var(--light-color);
+  border-width: 6px;
   background-color: var(--custom-green);
   border-color: var(--light-green);
   &:hover {
@@ -16,9 +17,37 @@
 }
 
 .repeat-btn {
+  color: var(--light-color);
+  border-width: 6px;
   background-color: var(--custom-red);
   border-color: var(--light-red);
   &:hover {
     background-color: var(--light-red);
+  }
+}
+
+.table-btn {
+  border-width: 1px;
+  color: var(--dark);
+}
+
+.delete-btn {
+  background-color: var(--delete-backgr);
+  &:hover {
+    background-color: var(--light-red);
+  }
+}
+
+.redact-btn {
+  background-color: var(--redact-backgr);
+  &:hover {
+    background-color: var(--light-yellow);
+  }
+}
+
+.save-btn {
+  background-color: var(--save-backgr);
+  &:hover {
+    background-color: var(--light-green);
   }
 }
