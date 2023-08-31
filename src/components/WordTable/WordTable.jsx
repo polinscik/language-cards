@@ -1,8 +1,8 @@
 import "./WordTable.scss";
 import dataArray from "../../testWords.json";
 import DeleteBtn from "./DeleteBtn";
-import RedactBtn from "./RedactBtn";
 import SaveBtn from "./SaveBtn";
+import TableRow from "./TableRow";
 
 function WordTable() {
   return (
@@ -19,15 +19,13 @@ function WordTable() {
         </thead>
         <tbody className="table__body">
           {dataArray.map((wordInfo) => (
-            <tr key={wordInfo.id}>
-              <td>{wordInfo.english}</td>
-              <td>{wordInfo.transcription}</td>
-              <td>{wordInfo.russian}</td>
-              <td>{wordInfo.tags}</td>
-              <td className="table__btn-cont">
-                <RedactBtn />
-              </td>
-            </tr>
+            <TableRow
+              key={wordInfo.id}
+              id={wordInfo.id}
+              word={wordInfo.english}
+              pronunciation={wordInfo.transcription}
+              translation={wordInfo.russian}
+              tags={wordInfo.tags}></TableRow>
           ))}
         </tbody>
       </table>
