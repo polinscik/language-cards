@@ -1,4 +1,4 @@
-import "../BtnStyles.scss";
+import "../Buttons/BtnStyles.scss";
 
 function DeleteBtn() {
   return <button className="btn table-btn delete-btn">Удалить</button>;

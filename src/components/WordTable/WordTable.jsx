@@ -1,7 +1,5 @@
 import "./WordTable.scss";
 import dataArray from "../../testWords.json";
-import DeleteBtn from "./DeleteBtn";
-import SaveBtn from "./SaveBtn";
 import TableRow from "./TableRow";
 
 function WordTable() {

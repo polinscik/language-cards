@@ -1,11 +1,11 @@
 import "./App.scss";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import Card from "./components/Card/Card";
-import LearnedBtn from "./components/LearnedBtn";
-import RepeatBtn from "./components/RepeatBtn";
-import WordTable from "./components/WordTable/WordTable";
-import dataArray from "./testWords.json";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import Card from "../Card/Card";
+import LearnedBtn from "../Buttons/LearnedBtn";
+import RepeatBtn from "../Buttons/RepeatBtn";
+import WordTable from "../WordTable/WordTable";
+import dataArray from "../../testWords.json";
 
 function App() {
   return (
