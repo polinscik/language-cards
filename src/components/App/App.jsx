@@ -2,8 +2,8 @@ import "./App.scss";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Card from "../Card/Card";
-import LearnedBtn from "../Buttons/LearnedBtn";
-import RepeatBtn from "../Buttons/RepeatBtn";
+import NextBtn from "../Buttons/NextBtn";
+import PreviousBtn from "../Buttons/PreviousBtn";
 import WordTable from "../WordTable/WordTable";
 import dataArray from "../../testWords.json";
 
@@ -18,8 +18,8 @@ function App() {
           translation={dataArray[0].russian}
           tags={dataArray[0].tags}></Card>
         <div className="btn-container">
-          <LearnedBtn></LearnedBtn>
-          <RepeatBtn></RepeatBtn>
+          <PreviousBtn></PreviousBtn>
+          <NextBtn></NextBtn>
         </div>
         <WordTable></WordTable>
       </main>

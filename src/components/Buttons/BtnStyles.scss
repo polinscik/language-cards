@@ -1,12 +1,11 @@
 .btn {
   font-family: inherit;
-
   border-style: solid;
   padding: 0.5vmin;
   font-size: large;
 }
 
-.learned-btn {
+.next-btn {
   color: var(--light-color);
   border-width: 6px;
   background-color: var(--custom-green);
@@ -16,7 +15,7 @@
   }
 }
 
-.repeat-btn {
+.previous-btn {
   color: var(--light-color);
   border-width: 6px;
   background-color: var(--custom-red);
@@ -49,5 +48,12 @@
   background-color: var(--save-backgr);
   &:hover {
     background-color: var(--light-green);
+  }
+}
+
+.showTranstation-btn {
+  background-color: var(--table--accent2);
+  &:hover {
+    background-color: var(--table--accent);
   }
 }
