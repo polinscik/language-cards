@@ -57,3 +57,10 @@
     background-color: var(--table--accent);
   }
 }
+
+.cancelChange-btn {
+  background-color: var(--cancel-change);
+  &:hover {
+    background-color: var(--cancel-change-hover);
+  }
+}
