@@ -1,0 +1,12 @@
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 2vw;
+  margin: 5vmin 0;
+  align-items: center;
+}
+
+.wordcount {
+  font-size: larger;
+}

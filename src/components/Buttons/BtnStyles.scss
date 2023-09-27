@@ -8,20 +8,28 @@
 .next-btn {
   color: var(--light-color);
   border-width: 6px;
-  background-color: var(--custom-green);
-  border-color: var(--light-green);
+  background-color: var(--next-btn-gen);
+  border-color: var(--next-btn-light);
   &:hover {
-    background-color: var(--light-green);
+    background-color: var(--next-btn-light);
+  }
+  &:disabled {
+    background-color: var(--next-btn-dis);
+    border-color: var(--next-btn-dis);
   }
 }
 
 .previous-btn {
   color: var(--light-color);
   border-width: 6px;
-  background-color: var(--custom-red);
-  border-color: var(--light-red);
+  background-color: var(--prev-btn-gen);
+  border-color: var(--prev-btn-light);
   &:hover {
-    background-color: var(--light-red);
+    background-color: var(--prev-btn-light);
+  }
+  &:disabled {
+    background-color: var(--prev-btn-dis);
+    border-color: var(--prev-btn-dis);
   }
 }
 
@@ -33,7 +41,7 @@
 .delete-btn {
   background-color: var(--delete-backgr);
   &:hover {
-    background-color: var(--light-red);
+    background-color: var(--prev-btn-light);
   }
 }
 
@@ -47,7 +55,7 @@
 .save-btn {
   background-color: var(--save-backgr);
   &:hover {
-    background-color: var(--light-green);
+    background-color: var(--next-btn-light);
   }
 }
 
@@ -64,3 +72,19 @@
     background-color: var(--cancel-change-hover);
   }
 }
+
+// button[disabled]:active,
+// button[disabled],
+// input[type="button"][disabled]:active,
+// input[type="button"][disabled],
+// input[type="submit"][disabled]:active,
+// input[type="submit"][disabled],
+// button[disabled]:hover,
+// input[type="button"][disabled]:hover,
+// input[type="submit"][disabled]:hover {
+//   border: 2px outset ButtonFace;
+//   color: GrayText;
+//   cursor: inherit;
+//   background-color: #ddd;
+//   background: #ddd;
+// }

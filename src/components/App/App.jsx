@@ -6,21 +6,14 @@ import NextBtn from "../Buttons/NextBtn";
 import PreviousBtn from "../Buttons/PreviousBtn";
 import WordTable from "../WordTable/WordTable";
 import dataArray from "../../testWords.json";
+import CardWrapper from "../CardWrapper/CardWrapper";
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
       <main className="main">
-        <Card
-          word={dataArray[0].english}
-          pronunciation={dataArray[0].transcription}
-          translation={dataArray[0].russian}
-          tags={dataArray[0].tags}></Card>
-        <div className="btn-container">
-          <PreviousBtn></PreviousBtn>
-          <NextBtn></NextBtn>
-        </div>
+        <CardWrapper dataArray={dataArray}></CardWrapper>
         <WordTable></WordTable>
       </main>
       <Footer></Footer>

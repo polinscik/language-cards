@@ -1,7 +1,7 @@
 import "./BtnStyles.scss";
-function PreviousBtn({onClick}) {
+function PreviousBtn({onClick, disabled}) {
   return (
-    <button onClick={onClick} className="btn previous-btn">
+    <button disabled={disabled} onClick={onClick} className="btn previous-btn">
       Назад
     </button>
   );
