@@ -1,6 +1,6 @@
 import "./WordTable.scss";
 import dataArray from "../../testWords.json";
-import TableRow from "./TableRow";
+import TableRow from "./ui/TableRow/TableRow";
 
 function WordTable() {
   return (

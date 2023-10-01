@@ -6,19 +6,31 @@
   --next-btn-gen: rgb(28, 111, 61);
   --next-btn-light: rgb(37, 148, 82);
   --next-btn-dis: rgba(75, 107, 88, 0.696);
+  --next-btn-active: rgb(50, 175, 100);
 
   --prev-btn-gen: rgb(132, 36, 27);
   --prev-btn-light: rgb(168, 46, 35);
   --prev-btn-dis: rgba(119, 75, 71, 0.785);
+  --prev-btn-active: rgb(201, 58, 45);
 
-  --light-yellow: rgb(249, 216, 68);
   --table-border: rgb(221, 221, 221);
   --table--accent: rgba(212, 177, 231, 0.667);
   --table--accent2: rgba(232, 205, 247, 0.667);
   --dark: #000;
-  --delete-backgr: rgb(210, 87, 75);
-  --redact-backgr: rgb(251, 229, 129);
-  --save-backgr: rgb(48, 181, 101);
-  --cancel-change: rgb(156, 156, 250);
-  --cancel-change-hover: rgb(123, 123, 251);
+
+  --delete-btn: rgb(210, 87, 75);
+  --delete-focus: rgb(201, 58, 45);
+  --delete-active: rgb(168, 46, 35);
+
+  --edit-btn: rgb(253, 236, 159);
+  --edit-focus: rgb(255, 227, 100);
+  --edit-active: rgb(249, 216, 68);
+
+  --save-btn: rgb(54, 207, 115);
+  --save-focus: rgb(44, 178, 98);
+  --save-active: rgb(37, 148, 82);
+
+  --cancel-change-btn: rgb(156, 156, 250);
+  --cancel-change-focus: rgb(133, 133, 252);
+  --cancel-change-active: rgb(114, 114, 255);
 }

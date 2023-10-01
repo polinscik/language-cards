@@ -16,6 +16,11 @@
   &:disabled {
     background-color: var(--next-btn-dis);
     border-color: var(--next-btn-dis);
+    pointer-events: none;
+  }
+  &:active {
+    background-color: var(--next-btn-active);
+    border-color: var(--next-btn-active);
   }
 }
 
@@ -30,6 +35,11 @@
   &:disabled {
     background-color: var(--prev-btn-dis);
     border-color: var(--prev-btn-dis);
+    pointer-events: none;
+  }
+  &:active {
+    background-color: var(--prev-btn-active);
+    border-color: var(--prev-btn-active);
   }
 }
 
@@ -39,23 +49,32 @@
 }
 
 .delete-btn {
-  background-color: var(--delete-backgr);
+  background-color: var(--delete-btn);
   &:hover {
-    background-color: var(--prev-btn-light);
+    background-color: var(--delete-focus);
+  }
+  &:active {
+    background-color: var(--delete-active);
   }
 }
 
-.redact-btn {
-  background-color: var(--redact-backgr);
+.edit-btn {
+  background-color: var(--edit-btn);
   &:hover {
-    background-color: var(--light-yellow);
+    background-color: var(--edit-focus);
+  }
+  &:active {
+    background-color: var(--edit-active);
   }
 }
 
 .save-btn {
-  background-color: var(--save-backgr);
+  background-color: var(--save-btn);
   &:hover {
-    background-color: var(--next-btn-light);
+    background-color: var(--save-focus);
+  }
+  &:active {
+    background-color: var(--save-active);
   }
 }
 
@@ -64,12 +83,18 @@
   &:hover {
     background-color: var(--table--accent);
   }
+  &:active {
+    background-color: var(--header-bg);
+  }
 }
 
 .cancelChange-btn {
-  background-color: var(--cancel-change);
+  background-color: var(--cancel-change-btn);
   &:hover {
-    background-color: var(--cancel-change-hover);
+    background-color: var(--cancel-change-focus);
+  }
+  &:active {
+    background-color: var(--cancel-change-active);
   }
 }
 

@@ -1,7 +1,6 @@
 import React, {Fragment, useState} from "react";
 import Card from "../Card/Card";
-import NextBtn from "../Buttons/NextBtn";
-import PreviousBtn from "../Buttons/PreviousBtn";
+import Button from "../Button/Button";
 import "./CardWrapper.scss";
 
 const testArr = [
@@ -38,13 +37,21 @@ export default function CardWrapper({dataArray = testArr, initialIndex = 0}) {
         translation={dataArray[index].russian}
         tags={dataArray[index].tags}></Card>
       <div className="btn-container">
-        <PreviousBtn
+        <Button
+          classname={"previous-btn"}
           disabled={!hasPrev}
-          onClick={handlePreviousClick}></PreviousBtn>
+          onClick={handlePreviousClick}>
+          Назад
+        </Button>
         <p className="wordcount">
           Карточка {index + 1} из {dataArray.length}
         </p>
-        <NextBtn disabled={!hasNext} onClick={handleNextClick}></NextBtn>
+        <Button
+          classname={"next-btn"}
+          disabled={!hasNext}
+          onClick={handleNextClick}>
+          Следующее слово
+        </Button>
       </div>
     </Fragment>
   );

@@ -1,5 +1,6 @@
 import "./Card.scss";
-import "../../components/Buttons/BtnStyles.scss";
+import "../Button/Button.scss";
+import Button from "../Button/Button";
 import {useState, Fragment} from "react";
 
 function Card({word, pronunciation, translation, tags}) {
@@ -19,9 +20,9 @@ function Card({word, pronunciation, translation, tags}) {
           <p className="card__theme">{tags}</p>
         </Fragment>
       )}
-      <button className="btn showTranstation-btn" onClick={handleClick}>
+      <Button classname="showTranstation-btn" onClick={handleClick}>
         {showTranslation ? "Скрыть" : "Показать"} перевод
-      </button>
+      </Button>
     </div>
   );
 }
