@@ -8,10 +8,12 @@
   align-self: stretch;
   padding: 2vmin 0;
   font-size: larger;
+  position: sticky;
+  top: 0;
 }
 
-.title {
-}
+// .title {
+// }
 
 .nav {
   margin-top: 1.5em;
@@ -21,13 +23,24 @@
   align-items: flex-start;
 }
 
-.nav-item {
+.nav-item a {
   margin-top: 5px;
   padding: 1vmin;
+  color: var(--dark);
   &:hover {
     background-color: var(--light-color);
     color: var(--backgr-color);
-
     border-radius: 10px;
   }
+  &:active {
+    color: var(--active-link);
+    background-color: var(--light-color);
+    border-radius: 10px;
+  }
+}
+
+.active {
+  color: var(--dark);
+  background-color: var(--light-color);
+  border-radius: 10px;
 }

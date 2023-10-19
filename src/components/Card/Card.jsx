@@ -1,5 +1,5 @@
 import "./Card.scss";
-import "../Button/Button.scss";
+
 import Button from "../Button/Button";
 import {useState, Fragment} from "react";
 
