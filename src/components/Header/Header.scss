@@ -3,13 +3,19 @@
 .header {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
+  column-gap: 2vw;
   background-color: var(--header-bg);
   align-self: stretch;
-  padding: 2vmin 0;
+  padding: 2vmin 2vw;
   font-size: larger;
   position: sticky;
   top: 0;
+}
+
+.logo {
+  max-width: 100%;
+  padding: 0.2vw;
 }
 
 // .title {
@@ -21,6 +27,7 @@
   display: flex;
   column-gap: 1em;
   align-items: flex-start;
+  justify-self: end;
 }
 
 .nav-item a {

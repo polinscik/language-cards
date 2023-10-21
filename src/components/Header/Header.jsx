@@ -1,9 +1,16 @@
 import "./Header.scss";
-import {NavLink, Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 function Header() {
   return (
     <header className="header">
+      <Link to={"/"}>
+        <img
+          className="logo"
+          alt="ABC logo"
+          src="src/images/alphabet-block.png"
+        />
+      </Link>
       <h2 className="title">Учи иностранные языки по карточкам</h2>
       <ul className="nav">
         <li className="nav-item">
