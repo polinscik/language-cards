@@ -4,7 +4,7 @@ import {Link, NavLink} from "react-router-dom";
 function Header() {
   return (
     <header className="header">
-      <Link to={"/"}>
+      <Link className="logo-link" to={"/"}>
         <img
           className="logo"
           alt="ABC logo"

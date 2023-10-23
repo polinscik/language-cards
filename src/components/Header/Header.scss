@@ -3,18 +3,24 @@
 .header {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: start;
   column-gap: 2vw;
   background-color: var(--header-bg);
   align-self: stretch;
+  align-items: center;
   padding: 2vmin 2vw;
   font-size: larger;
   position: sticky;
   top: 0;
 }
 
+.logo-link {
+  width: 25%;
+  height: 25%;
+}
 .logo {
-  max-width: 100%;
+  max-width: 25%;
+  max-height: 25%;
   padding: 0.2vw;
 }
 
@@ -26,8 +32,10 @@
   list-style-type: none;
   display: flex;
   column-gap: 1em;
+  row-gap: 1em;
   align-items: flex-start;
   justify-self: end;
+  flex-wrap: wrap;
 }
 
 .nav-item a {
