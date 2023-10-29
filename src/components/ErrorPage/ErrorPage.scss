@@ -1,0 +1,28 @@
+.error-page {
+  background-color: var(--backgr-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  min-height: 100vh;
+  row-gap: 1vh;
+
+  &__title {
+    padding: 2vw;
+  }
+  &__info {
+    color: var(--active-link);
+    display: flex;
+    flex-direction: column;
+    row-gap: 1vh;
+  }
+  &__link {
+    padding: 3vh 3vw;
+    background-color: var(--light-color);
+  }
+
+  &__img {
+    max-width: 33%;
+  }
+}

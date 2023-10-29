@@ -7,7 +7,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Root from "./components/Root/Root";
+import App from "./components/App/App";
 import WordTable from "./components/WordTable/WordTable";
 import CardWrapper from "./components/CardWrapper/CardWrapper";
 import dataArray from "./testWords.json";
@@ -15,12 +15,12 @@ import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root></Root>}>
+    <Route path="/" element={<App></App>} errorElement={<ErrorPage />}>
       <Route path="/" element={<WordTable></WordTable>}></Route>
       <Route
         path="/game"
         element={<CardWrapper dataArray={dataArray}></CardWrapper>}></Route>
-      <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
+      {/* <Route path="*" element={<ErrorPage></ErrorPage>}></Route> */}
     </Route>
   )
 );
