@@ -80,11 +80,15 @@
 
 .showTranstation-btn {
   background-color: var(--table--accent2);
+  border-color: var(--header-bg);
   &:hover {
     background-color: var(--table--accent);
   }
   &:active {
     background-color: var(--header-bg);
+  }
+  &:focus {
+    border-color: var(--dark);
   }
 }
 
@@ -97,4 +101,3 @@
     background-color: var(--cancel-change-active);
   }
 }
-

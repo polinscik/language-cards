@@ -1,13 +1,21 @@
 import "./Card.scss";
 
 import Button from "../Button/Button";
-import {useState, Fragment} from "react";
+import {useState, Fragment, useRef, useEffect} from "react";
 
-function Card({word, pronunciation, translation, tags}) {
+function Card({word, pronunciation, translation, tags, updateLearnedCount}) {
   const [showTranslation, setShowTranslation] = useState(false);
+  const btnRef = useRef(null);
+
+  useEffect(() => {
+    btnRef.current.focus();
+  });
 
   function handleClick() {
     setShowTranslation(!showTranslation);
+    if (!showTranslation) {
+      updateLearnedCount();
+    }
   }
 
   return (
@@ -20,7 +28,10 @@ function Card({word, pronunciation, translation, tags}) {
           <p className="card__theme">{tags}</p>
         </Fragment>
       )}
-      <Button classname="showTranstation-btn" onClick={handleClick}>
+      <Button
+        ref={btnRef}
+        classname="showTranstation-btn"
+        onClick={handleClick}>
         {showTranslation ? "Скрыть" : "Показать"} перевод
       </Button>
     </div>
