@@ -1,0 +1,15 @@
+.table-input {
+  font-size: medium;
+}
+.invalid-input {
+  border-color: red;
+  border-width: 3px;
+}
+
+.input-error-message {
+  font-size: smaller;
+  background-color: white;
+  color: red;
+  font-style: italic;
+  padding: 0 0.3rem;
+}
