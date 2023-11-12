@@ -28,8 +28,7 @@ export default function CardWrapper({dataArray = testArr, initialIndex = 0}) {
   const checkGrammar = (learnedValue) => {
     let result;
     if (learnedValue >= 11 && learnedValue <= 14) {
-      result = "слов";
-      return result;
+      return "слов";
     }
     let lastNumber = learnedValue.toString().slice(-1);
     switch (lastNumber) {

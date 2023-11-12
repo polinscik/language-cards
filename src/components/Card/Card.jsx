@@ -11,6 +11,10 @@ function Card({word, pronunciation, translation, tags, updateLearnedCount}) {
     btnRef.current.focus();
   });
 
+  useEffect(() => {
+    setShowTranslation(false);
+  }, [word]);
+
   function handleClick() {
     setShowTranslation(!showTranslation);
     if (!showTranslation) {
