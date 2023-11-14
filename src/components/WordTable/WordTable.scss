@@ -3,13 +3,16 @@
   border-collapse: collapse;
   font-size: larger;
   margin-bottom: 3vh;
+  @media (max-width: 1050px) {
+    overflow: scroll;
+  }
 }
 
 .table__head th {
   font-weight: bold;
   text-align: left;
   border: none;
-  padding: 10px 15px;
+  padding: 0.5rem 1rem;
   background: var(--light-color);
   border-left: 1px solid var(--light-color);
   border-right: 1px solid var(--light-color);
@@ -19,7 +22,7 @@
   text-align: left;
   border-left: 1px solid var(--table-border);
   border-right: 1px solid var(--table-border);
-  padding: 10px 15px;
+  padding: 0.5rem 1rem;
   vertical-align: top;
 }
 
@@ -38,5 +41,6 @@
   display: flex;
   flex-direction: row;
   column-gap: 1vw;
+  row-gap: 0.3rem;
   flex-wrap: wrap;
 }
