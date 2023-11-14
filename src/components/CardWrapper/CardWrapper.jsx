@@ -2,6 +2,8 @@ import React, {Fragment, useState} from "react";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import "./CardWrapper.scss";
+import {useContext} from "react";
+import {DataContext} from "../DataContext/DataContext";
 
 const testArr = [
   {
@@ -12,13 +14,18 @@ const testArr = [
   },
 ];
 
-export default function CardWrapper({dataArray = testArr, initialIndex = 0}) {
+export default function CardWrapper({initialIndex = 0}) {
+  const {data, setData} = useContext(DataContext);
   const [index, setIndex] = useState(initialIndex);
   const [learned, setLearned] = useState(0);
   const [grammarWord, setGrammarWord] = useState("слов");
 
+  if (!data) {
+    return <p>Loading</p>;
+  }
+
   let hasPrev = index > 0;
-  let hasNext = index < dataArray.length - 1;
+  let hasNext = index < data.length - 1;
 
   const updateLearnedCount = () => {
     setLearned((prevCount) => prevCount + 1);
@@ -63,13 +70,14 @@ export default function CardWrapper({dataArray = testArr, initialIndex = 0}) {
       setIndex(index + 1);
     }
   };
+
   return (
     <Fragment>
       <Card
-        word={dataArray[index].english}
-        pronunciation={dataArray[index].transcription}
-        translation={dataArray[index].russian}
-        tags={dataArray[index].tags}
+        word={data[index].english}
+        pronunciation={data[index].transcription}
+        translation={data[index].russian}
+        tags={data[index].tags}
         updateLearnedCount={updateLearnedCount}></Card>
       <div className="btn-container">
         <Button
@@ -79,7 +87,7 @@ export default function CardWrapper({dataArray = testArr, initialIndex = 0}) {
           Назад
         </Button>
         <p className="wordcount">
-          Карточка {index + 1} из {dataArray.length}
+          Карточка {index + 1} из {data.length}
         </p>
         <p className="words-learned">
           Изучено {learned} {grammarWord}

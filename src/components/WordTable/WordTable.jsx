@@ -1,8 +1,14 @@
 import "./WordTable.scss";
 import dataArray from "../../testWords.json";
 import TableRow from "./ui/TableRow/TableRow";
+import {useContext} from "react";
+import {DataContext} from "../DataContext/DataContext";
 
 function WordTable() {
+  const {data, setData} = useContext(DataContext);
+  if (!data) {
+    return <p>Loading</p>;
+  }
   return (
     <div>
       <table className="table">
@@ -16,7 +22,7 @@ function WordTable() {
           </tr>
         </thead>
         <tbody className="table__body">
-          {dataArray.map((wordInfo) => (
+          {data.map((wordInfo) => (
             <TableRow
               key={wordInfo.id}
               id={wordInfo.id}
