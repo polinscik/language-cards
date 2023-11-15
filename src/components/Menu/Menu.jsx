@@ -30,9 +30,9 @@ export default function Menu() {
         </li>
         <li className="nav-item">
           <NavLink
-            to="/create"
+            to="/add-word"
             className={({isActive}) => (isActive ? "active" : "")}>
-            Создать коллекцию
+            Создать карточку
           </NavLink>
         </li>
       </ul>

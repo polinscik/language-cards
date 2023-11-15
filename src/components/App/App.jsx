@@ -1,4 +1,4 @@
-import React, {Fragment, useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import "./App.scss";

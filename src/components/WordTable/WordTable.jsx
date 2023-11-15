@@ -1,5 +1,4 @@
 import "./WordTable.scss";
-import dataArray from "../../testWords.json";
 import TableRow from "./ui/TableRow/TableRow";
 import {useContext} from "react";
 import {DataContext} from "../DataContext/DataContext";
