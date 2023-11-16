@@ -4,6 +4,10 @@
   &__title {
     margin-bottom: 1rem;
   }
+  &__error-message {
+    background-color: var(--light-color);
+    padding: 0.2rem;
+  }
 }
 .new-word__form {
   display: flex;
@@ -20,4 +24,8 @@
     font-size: large;
     padding: 0.2rem;
   }
+}
+
+.new-word__invalid {
+  border: 2px solid red;
 }

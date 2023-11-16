@@ -10,15 +10,87 @@ export default function NewWord() {
     pronunciation: "",
     tags: "",
   });
+  const [invalid, setInvalid] = useState({
+    word: false,
+    translation: false,
+    pronunciation: false,
+    tags: false,
+  });
+  const {data, setData} = useContext(DataContext);
+
+  const formInvalid =
+    invalid.word ||
+    invalid.translation ||
+    invalid.pronunciation ||
+    invalid.tags;
+
+  const isFormValid =
+    form.tags.trim() &&
+    form.word.trim() &&
+    form.pronunciation.trim() &&
+    form.translation.trim();
+
+  if (!data) {
+    return <p>Loading</p>;
+  }
+  const nextId = String(Number(data[data.length - 1].id) + 1);
+  const wordData = {
+    id: nextId,
+    english: form.word.trim(),
+    russian: form.translation.trim(),
+    transcription: form.pronunciation.trim(),
+    tags: form.tags.trim(),
+  };
+
+  const wordClassName = invalid.word ? "new-word__invalid" : "";
+  const translationClassName = invalid.translation ? "new-word__invalid" : "";
+  const pronunciationClassName = invalid.pronunciation
+    ? "new-word__invalid"
+    : "";
+  const tagsClassName = invalid.tags ? "new-word__invalid" : "";
 
   function handleChange(e) {
     setForm({...form, [e.target.name]: e.target.value});
+
+    if (e.target.value.trim()) {
+      setInvalid({...invalid, [e.target.name]: false});
+    } else if (!e.target.value.trim()) {
+      setInvalid({...invalid, [e.target.name]: true});
+    }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(form);
+    if (!form.tags.trim()) {
+      setInvalid({...invalid, tags: true});
+    }
+    if (!form.translation.trim()) {
+      setInvalid({...invalid, translation: true});
+    }
+    if (!form.pronunciation.trim()) {
+      setInvalid({...invalid, pronunciation: true});
+    }
+    if (!form.word.trim()) {
+      setInvalid({...invalid, word: true});
+    }
+    if (!formInvalid && isFormValid) {
+      console.log(JSON.stringify(wordData));
+      fetch("http://itgirlschool.justmakeit.ru/api/words/add", {
+        method: "POST",
+        body: JSON.stringify(wordData),
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => {
+          response.json();
+          console.log(response);
+          setData(...data, {...wordData});
+        })
+        .catch((error) => console.log(error));
+    }
   }
+
   return (
     <section className="new-word">
       <h2 className="new-word__title">Заполните данные карточки:</h2>
@@ -31,6 +103,7 @@ export default function NewWord() {
             id="word"
             value={form.word}
             onChange={(e) => handleChange(e)}
+            className={wordClassName}
           />
         </div>
         <div className="new-word__input-field">
@@ -41,6 +114,7 @@ export default function NewWord() {
             id="pronunciation"
             value={form.pronunciation}
             onChange={(e) => handleChange(e)}
+            className={pronunciationClassName}
           />
         </div>
         <div className="new-word__input-field">
@@ -51,6 +125,7 @@ export default function NewWord() {
             id="translation"
             value={form.translation}
             onChange={(e) => handleChange(e)}
+            className={translationClassName}
           />
         </div>
         <div className="new-word__input-field">
@@ -61,9 +136,18 @@ export default function NewWord() {
             id="tags"
             value={form.tags}
             onChange={(e) => handleChange(e)}
+            className={tagsClassName}
           />
         </div>
-        <Button classname={"save-btn new-word-btn"} onClick={handleSubmit}>
+        {formInvalid && (
+          <div>
+            <p className="new-word__error-message">Заполните все поля!</p>
+          </div>
+        )}
+        <Button
+          classname={"save-btn new-word-btn"}
+          onClick={handleSubmit}
+          disabled={formInvalid}>
           Сохранить
         </Button>
       </form>
