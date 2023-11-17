@@ -1,8 +1,9 @@
-import React, {useState, Fragment} from "react";
+import React, {useState, Fragment, useContext} from "react";
 import Button from "../../../Button/Button";
 import "./TableRow.scss";
+import {DataContext} from "../../../DataContext/DataContext";
 
-function TableRow({id, word, pronunciation, translation, tags}) {
+function TableRow({id, word, pronunciation, translation, tags, index}) {
   const [editMode, setEditMode] = useState(false);
   const [wordState, setWord] = useState(word);
   const [wordInvalid, setWordInvalid] = useState(false);
@@ -29,6 +30,11 @@ function TableRow({id, word, pronunciation, translation, tags}) {
     ? "invalid-input table-input"
     : "table-input";
 
+  const {data, setData} = useContext(DataContext);
+
+  if (!data) {
+    return <p>Loading</p>;
+  }
   function handleSave() {
     if (!wordState.trim()) {
       setWordInvalid(true);
@@ -44,13 +50,25 @@ function TableRow({id, word, pronunciation, translation, tags}) {
     }
     if (!isFormInvalid) {
       setEditMode(!editMode);
-      console.log({
+      const wordData = {
         id: id,
-        word: wordState,
-        pronunciation: pronunciationState,
-        translation: translationState,
-        tags: tagsState,
-      });
+        english: wordState.trim(),
+        transcription: pronunciationState.trim(),
+        russian: translationState.trim(),
+        tags: tagsState.trim(),
+      };
+      console.log(JSON.stringify(wordData));
+      fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
+        method: "POST",
+        body: JSON.stringify(wordData),
+        headers: {"Content-Type": "application/json"},
+      })
+        .then((response) => {
+          console.log(response);
+          console.log(index);
+          // setData([...data, {...data[index], ...wordData}]); //нужен индекс?? / пока контекст обновляется только перезагрузкой
+        })
+        .catch((error) => console.log(error));
     }
   }
 

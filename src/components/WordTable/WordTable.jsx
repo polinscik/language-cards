@@ -24,6 +24,7 @@ function WordTable() {
           {data.map((wordInfo) => (
             <TableRow
               key={wordInfo.id}
+              index={wordInfo.index} // undefined как достать индекс?
               id={wordInfo.id}
               word={wordInfo.english}
               pronunciation={wordInfo.transcription}
