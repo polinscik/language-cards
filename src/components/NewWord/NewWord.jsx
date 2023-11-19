@@ -64,19 +64,20 @@ export default function NewWord() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!form.tags.trim()) {
-      setInvalid({...invalid, tags: true}); // как сделать стрелочную фцию?, тк пока в стейт попадает только одно из обновлений
+      setInvalid((prev) => ({...prev, tags: true}));
     }
     if (!form.translation.trim()) {
-      setInvalid({...invalid, translation: true});
+      setInvalid((prev) => ({...prev, translation: true}));
     }
     if (!form.pronunciation.trim()) {
-      setInvalid({...invalid, pronunciation: true});
+      setInvalid((prev) => ({...prev, pronunciation: true}));
     }
     if (!form.word.trim()) {
-      setInvalid({...invalid, word: true});
+      setInvalid((prev) => ({...prev, word: true}));
     }
     if (!formInvalid && isFormValidInitially) {
       console.log(JSON.stringify(wordData));
+      //Добавление новой карточки
       fetch("http://itgirlschool.justmakeit.ru/api/words/add", {
         //Не работает. Разбирали с ментором, пробовали написать "/api/words/add" но отсылает на 'localhost:5173/api/words/add' а не на api
         // если правильно писать относительный адрес, то почему на Get, /delete и /update запросы работают с полным адресом? (и только с ним)
