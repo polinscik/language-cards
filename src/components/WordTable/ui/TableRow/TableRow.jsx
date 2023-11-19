@@ -65,8 +65,16 @@ function TableRow({id, word, pronunciation, translation, tags, index}) {
       })
         .then((response) => {
           console.log(response);
-          console.log(index);
-          // setData([...data, {...data[index], ...wordData}]); //нужен индекс?? / пока контекст обновляется только перезагрузкой
+          // console.log(data);
+          // console.log(index);
+          const newArr = data.map((el, i) => {
+            if (i == index) {
+              el = {...wordData};
+            }
+            return el;
+          });
+          // console.log(newArr);
+          setData(newArr); // обновление контекста работает без перезагрузки стр
         })
         .catch((error) => console.log(error));
     }
@@ -122,6 +130,38 @@ function TableRow({id, word, pronunciation, translation, tags, index}) {
     setTranslation(translation);
     setTags(tags);
     setEditMode(false);
+  }
+
+  function handleDelete() {
+    const wordData = {
+      id: id,
+      english: word,
+      transcription: pronunciation,
+      russian: translation,
+      tags: tags,
+    };
+    console.log(wordData);
+    fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/delete`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(wordData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log(response);
+        const newArr = data.filter((el, i) => {
+          return i !== index;
+        });
+        console.log(newArr);
+        setData(newArr);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   return (
@@ -187,7 +227,9 @@ function TableRow({id, word, pronunciation, translation, tags, index}) {
             <Button classname={"table-btn edit-btn"} onClick={handleChange}>
               Изменить
             </Button>
-            <Button classname={"table-btn delete-btn"}>Удалить</Button>
+            <Button classname={"table-btn delete-btn"} onClick={handleDelete}>
+              Удалить
+            </Button>
           </td>
         </tr>
       )}

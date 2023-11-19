@@ -21,10 +21,10 @@ function WordTable() {
           </tr>
         </thead>
         <tbody className="table__body">
-          {data.map((wordInfo) => (
+          {data.map((wordInfo, index) => (
             <TableRow
               key={wordInfo.id}
-              index={wordInfo.index} // undefined как достать индекс?
+              index={index}
               id={wordInfo.id}
               word={wordInfo.english}
               pronunciation={wordInfo.transcription}

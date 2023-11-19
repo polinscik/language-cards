@@ -2,6 +2,7 @@
   "name": "language-cards",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://itgirlschool.justmakeit.ru",
   "type": "module",
   "dependencies": {
     "@types/react": "^18.2.31",
@@ -40,6 +41,5 @@
     "@vitejs/plugin-react": "^4.1.0",
     "vite": "^4.5.0",
     "vite-plugin-html": "^3.2.0"
-  },
-  "proxy": "http://itgirlschool.justmakeit.ru"
+  }
 }

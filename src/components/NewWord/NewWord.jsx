@@ -24,7 +24,7 @@ export default function NewWord() {
     invalid.pronunciation ||
     invalid.tags;
 
-  const isFormValid =
+  const isFormValidInitially =
     form.tags.trim() &&
     form.word.trim() &&
     form.pronunciation.trim() &&
@@ -33,7 +33,9 @@ export default function NewWord() {
   if (!data) {
     return <p>Loading</p>;
   }
-  const nextId = String(Number(data[data.length - 1].id) + 1);
+
+  const nextId = Number(data[data.length - 1].id) + 1;
+
   const wordData = {
     id: nextId,
     english: form.word.trim(),
@@ -62,7 +64,7 @@ export default function NewWord() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!form.tags.trim()) {
-      setInvalid({...invalid, tags: true});
+      setInvalid({...invalid, tags: true}); // как сделать стрелочную фцию?, тк пока в стейт попадает только одно из обновлений
     }
     if (!form.translation.trim()) {
       setInvalid({...invalid, translation: true});
@@ -73,21 +75,27 @@ export default function NewWord() {
     if (!form.word.trim()) {
       setInvalid({...invalid, word: true});
     }
-    if (!formInvalid && isFormValid) {
+    if (!formInvalid && isFormValidInitially) {
       console.log(JSON.stringify(wordData));
       fetch("http://itgirlschool.justmakeit.ru/api/words/add", {
+        //Не работает. Разбирали с ментором, пробовали написать "/api/words/add" но отсылает на 'localhost:5173/api/words/add' а не на api
+        // если правильно писать относительный адрес, то почему на Get, /delete и /update запросы работают с полным адресом? (и только с ним)
         method: "POST",
-        body: JSON.stringify(wordData),
         headers: {
-          "Content-Type": "application/json; charset=UTF-8",
+          "Content-Type": "application/json;charset=utf-8",
         },
+        body: JSON.stringify(wordData),
       })
         .then((response) => {
-          response.json();
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
           console.log(response);
           setData(...data, {...wordData});
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     }
   }
 
@@ -155,5 +163,4 @@ export default function NewWord() {
   );
 }
 
-//todo: make new route for this component. this is a form that will POST its data to the server(?) and change the context
-// do validation on submit
+// this is a form that will POST its data to the server and change the context

@@ -21,7 +21,7 @@ export default function App() {
       })
       .then((response) => {
         setData(response);
-        console.log(response);
+        // console.log(response);
       })
       .catch((error) => {
         console.error("Error:", error);
