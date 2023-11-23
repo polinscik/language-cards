@@ -12,6 +12,10 @@ import WordTable from "./components/WordTable/WordTable";
 import CardWrapper from "./components/CardWrapper/CardWrapper";
 import dataArray from "./testWords.json";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
+import ObservableWordStore from "./stores/WordStore";
+import {Provider} from "mobx-react";
+
+const stores = {wordStore: new ObservableWordStore()};
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,13 +24,14 @@ const router = createBrowserRouter(
       <Route
         path="/game"
         element={<CardWrapper dataArray={dataArray}></CardWrapper>}></Route>
-      {/* <Route path="*" element={<ErrorPage></ErrorPage>}></Route> */}
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider {...stores}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

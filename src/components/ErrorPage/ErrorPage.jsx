@@ -9,10 +9,10 @@ export default function ErrorPage() {
   return (
     <section className="error-page">
       <h1 className="error-page__title">Error!</h1>
-      <p className="error-page__info">
+      <div className="error-page__info">
         <p>Произошла ошибка</p>
         {error !== undefined && <i>{error.statusText || error.message}</i>}
-      </p>
+      </div>
 
       <Link to={"/"} className="error-page__link">
         Вернуться на главную страницу

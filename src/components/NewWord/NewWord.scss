@@ -1,0 +1,37 @@
+.new-word {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  max-width: 800px;
+  &__title {
+    margin-bottom: 1rem;
+  }
+  &__error-message {
+    background-color: var(--light-color);
+    padding: 0.2rem;
+  }
+  &__success-message {
+    background-color: var(--next-btn-active);
+    padding: 0.2rem;
+  }
+}
+.new-word__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  font-size: large;
+}
+
+.new-word__input-field {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1rem;
+  & input {
+    font-size: large;
+    padding: 0.2rem;
+  }
+}
+
+.new-word__invalid {
+  border: 2px solid red;
+}

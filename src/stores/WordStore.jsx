@@ -6,18 +6,33 @@ import {
   computed,
 } from "mobx";
 // import {observer, inject} from "mobx-react";
-// import {Provider} from "mobx-react";
 
 class ObservableWordStore {
   words = [];
+  isGetLoading = false;
   isLoading = false;
 
   constructor() {
-    makeAutoObservable(this);
+    makeObservable(this, {
+      words: observable,
+      isLoading: observable,
+      isGetLoading: observable,
+      nextId: computed,
+      getData: action,
+      deleteWord: action,
+      updateWord: action,
+      addNewWord: action,
+    });
   }
 
-  getData = () => {
-    this.isLoading = true;
+  get nextId() {
+    if (this.words.length > 0) {
+      return Number(this.words[this.words.length - 1].id) + 1;
+    }
+  }
+
+  getData() {
+    this.isGetLoading = true;
     return fetch("/api/words", {
       method: "GET",
     })
@@ -29,36 +44,91 @@ class ObservableWordStore {
       })
       .then((data) => {
         this.words = data;
+        this.isGetLoading = false;
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        this.isGetLoading = false;
+      });
+  }
+
+  deleteWord(id, index) {
+    this.isLoading = true;
+    return fetch(`/api/words/${id}/delete`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log(response);
         this.isLoading = false;
+        const newArr = this.words.filter((el, i) => {
+          return i !== index;
+        });
+        this.words = newArr;
       })
       .catch((error) => {
         console.log(error);
         this.isLoading = false;
       });
-  };
-
-  get completedTodosCount() {
-    return this.todos.filter((todo) => todo.completed === true).length;
   }
 
-  get report() {
-    if (this.todos.length === 0) return "<none>";
-    const nextTodo = this.todos.find((todo) => todo.completed === false);
-    return (
-      `Next todo: "${nextTodo ? nextTodo.task : "<none>"}". ` +
-      `Progress: ${this.completedTodosCount}/${this.todos.length}`
-    );
+  updateWord(word, index) {
+    this.isLoading = true;
+    return fetch(`/api/words/${word.id}/update`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(word),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log(response);
+        this.isLoading = false;
+        const newArr = this.words.map((el, i) => {
+          if (i == index) {
+            el = {...word};
+          }
+          return el;
+        });
+        this.words = newArr;
+      })
+      .catch((error) => {
+        console.log(error);
+        this.isLoading = false;
+      });
   }
 
-  addTodo(task) {
-    this.todos.push({
-      task: task,
-      completed: false,
-      assignee: null,
-    });
+  addNewWord(word) {
+    this.isLoading = true;
+    return fetch(`/api/words/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(word),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log(response);
+        this.isLoading = false;
+        this.words.push(word);
+      })
+      .catch((error) => {
+        console.log(error);
+        this.isLoading = false;
+      });
   }
 }
 
 export default ObservableWordStore;
-
-const observableTodoStore = new ObservableWordStore();
