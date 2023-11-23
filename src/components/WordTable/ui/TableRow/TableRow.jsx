@@ -74,7 +74,7 @@ function TableRow({id, word, pronunciation, translation, tags, index}) {
             return el;
           });
           // console.log(newArr);
-          setData(newArr); // обновление контекста работает без перезагрузки стр
+          setData(newArr); // обновление контекста
         })
         .catch((error) => console.log(error));
     }
