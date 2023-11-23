@@ -16,6 +16,7 @@ export default function NewWord() {
     pronunciation: false,
     tags: false,
   });
+  const [success, setSuccess] = useState(false);
   const {data, setData} = useContext(DataContext);
 
   const formInvalid =
@@ -78,9 +79,7 @@ export default function NewWord() {
     if (!formInvalid && isFormValidInitially) {
       console.log(JSON.stringify(wordData));
       //Добавление новой карточки
-      fetch("http://itgirlschool.justmakeit.ru/api/words/add", {
-        //Не работает. Разбирали с ментором, пробовали написать "/api/words/add" но отсылает на 'localhost:5173/api/words/add' а не на api
-        // если правильно писать относительный адрес, то почему на Get, /delete и /update запросы работают с полным адресом? (и только с ним)
+      fetch("/api/words/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -92,7 +91,15 @@ export default function NewWord() {
             throw new Error("Network response was not ok");
           }
           console.log(response);
-          setData(...data, {...wordData});
+          setData([...data, {...wordData}]);
+          setSuccess(true);
+          setTimeout(() => setSuccess(false), 5000);
+          setForm({
+            word: "",
+            translation: "",
+            pronunciation: "",
+            tags: "",
+          });
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -151,6 +158,11 @@ export default function NewWord() {
         {formInvalid && (
           <div>
             <p className="new-word__error-message">Заполните все поля!</p>
+          </div>
+        )}
+        {success && (
+          <div>
+            <p className="new-word__success-message">Слово добавлено!</p>
           </div>
         )}
         <Button

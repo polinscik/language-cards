@@ -8,6 +8,10 @@
     background-color: var(--light-color);
     padding: 0.2rem;
   }
+  &__success-message {
+    background-color: var(--next-btn-active);
+    padding: 0.2rem;
+  }
 }
 .new-word__form {
   display: flex;

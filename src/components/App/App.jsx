@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://itgirlschool.justmakeit.ru/api/words", {method: "GET"})
+    fetch("/api/words", {method: "GET"})
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

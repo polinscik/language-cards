@@ -58,22 +58,19 @@ function TableRow({id, word, pronunciation, translation, tags, index}) {
         tags: tagsState.trim(),
       };
       console.log(JSON.stringify(wordData));
-      fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
+      fetch(`/api/words/${id}/update`, {
         method: "POST",
         body: JSON.stringify(wordData),
         headers: {"Content-Type": "application/json"},
       })
         .then((response) => {
           console.log(response);
-          // console.log(data);
-          // console.log(index);
           const newArr = data.map((el, i) => {
             if (i == index) {
               el = {...wordData};
             }
             return el;
           });
-          // console.log(newArr);
           setData(newArr); // обновление контекста
         })
         .catch((error) => console.log(error));
@@ -141,7 +138,7 @@ function TableRow({id, word, pronunciation, translation, tags, index}) {
       tags: tags,
     };
     console.log(wordData);
-    fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/delete`, {
+    fetch(`/api/words/${id}/delete`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
