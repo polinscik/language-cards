@@ -123,10 +123,12 @@ class ObservableWordStore {
         console.log(response);
         this.isLoading = false;
         this.words.push(word);
+        return true;
       })
       .catch((error) => {
         console.log(error);
         this.isLoading = false;
+        return false;
       });
   }
 }

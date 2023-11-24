@@ -75,16 +75,20 @@ const NewWord = inject(["wordStore"])(
       if (!formInvalid && isFormValidInitially) {
         console.log(JSON.stringify(wordData));
         //Добавление новой карточки
-        wordStore.addNewWord(wordData);
-        // при успешном добавлении ?? как проверить
-        // setSuccess(true);
-        //   setTimeout(() => setSuccess(false), 5000);
-        //   setForm({
-        //     word: "",
-        //     translation: "",
-        //     pronunciation: "",
-        //     tags: "",
-        //   });
+        // wordStore.addNewWord(wordData);
+        const isRequestSuccessful = wordStore.addNewWord(wordData);
+        // как проверить успешное добавление на сервер? // коллбэк из стора - можно ли так делать?
+
+        if (isRequestSuccessful) {
+          setSuccess(true);
+          setTimeout(() => setSuccess(false), 5000);
+          setForm({
+            word: "",
+            translation: "",
+            pronunciation: "",
+            tags: "",
+          });
+        }
       }
     }
 
