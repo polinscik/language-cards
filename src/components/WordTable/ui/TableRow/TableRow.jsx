@@ -3,8 +3,6 @@ import Button from "../../../Button/Button";
 import "./TableRow.scss";
 import {observer, inject} from "mobx-react";
 
-//как уместить пропс в этом синтаксисе?
-
 const TableRow = inject(["wordStore"])(
   observer(({wordStore, id, index, word, pronunciation, translation, tags}) => {
     const [editMode, setEditMode] = useState(false);

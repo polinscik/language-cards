@@ -1,11 +1,4 @@
-import {
-  makeObservable,
-  makeAutoObservable,
-  observable,
-  action,
-  computed,
-} from "mobx";
-// import {observer, inject} from "mobx-react";
+import {makeObservable, observable, action, computed} from "mobx";
 
 class ObservableWordStore {
   words = [];

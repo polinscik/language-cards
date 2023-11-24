@@ -4,16 +4,14 @@ import Button from "../Button/Button";
 import {observer, inject} from "mobx-react";
 import "./CardWrapper.scss";
 
-//todo: use store in Card
-
-const testArr = [
-  {
-    english: "Не удалось получить данные",
-    transcription: "",
-    russian: "",
-    tags: "",
-  },
-];
+// const testArr = [
+//   {
+//     english: "Не удалось получить данные",
+//     transcription: "",
+//     russian: "",
+//     tags: "",
+//   },
+// ];
 
 const CardWrapper = inject(["wordStore"])(
   observer(({wordStore, initialIndex = 0}) => {

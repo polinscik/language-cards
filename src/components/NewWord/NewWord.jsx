@@ -162,5 +162,4 @@ const NewWord = inject(["wordStore"])(
   })
 );
 
-// this is a form that will POST its data to the server and change the context
 export default NewWord;
