@@ -37,11 +37,12 @@ class ObservableWordStore {
       })
       .then((data) => {
         this.words = data;
-        this.isGetLoading = false;
         console.log(data);
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
         this.isGetLoading = false;
       });
   }
@@ -59,7 +60,6 @@ class ObservableWordStore {
           throw new Error("Network response was not ok");
         }
         console.log(response);
-        this.isLoading = false;
         const newArr = this.words.filter((el, i) => {
           return i !== index;
         });
@@ -67,6 +67,8 @@ class ObservableWordStore {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
         this.isLoading = false;
       });
   }
@@ -85,7 +87,6 @@ class ObservableWordStore {
           throw new Error("Network response was not ok");
         }
         console.log(response);
-        this.isLoading = false;
         const newArr = this.words.map((el, i) => {
           if (i == index) {
             el = {...word};
@@ -96,6 +97,8 @@ class ObservableWordStore {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
         this.isLoading = false;
       });
   }
@@ -114,14 +117,15 @@ class ObservableWordStore {
           throw new Error("Network response was not ok");
         }
         console.log(response);
-        this.isLoading = false;
         this.words.push(word);
-        return true;
+        return true; //принимается компонентом
       })
       .catch((error) => {
         console.log(error);
+        return false; //принимается компонентом
+      })
+      .finally(() => {
         this.isLoading = false;
-        return false;
       });
   }
 }

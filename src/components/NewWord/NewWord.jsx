@@ -58,7 +58,7 @@ const NewWord = inject(["wordStore"])(
       }
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
       e.preventDefault();
       if (!form.tags.trim()) {
         setInvalid((prev) => ({...prev, tags: true}));
@@ -75,10 +75,7 @@ const NewWord = inject(["wordStore"])(
       if (!formInvalid && isFormValidInitially) {
         console.log(JSON.stringify(wordData));
         //Добавление новой карточки
-        // wordStore.addNewWord(wordData);
-        const isRequestSuccessful = wordStore.addNewWord(wordData);
-        // как проверить успешное добавление на сервер? // коллбэк из стора - можно ли так делать?
-
+        const isRequestSuccessful = await wordStore.addNewWord(wordData);
         if (isRequestSuccessful) {
           setSuccess(true);
           setTimeout(() => setSuccess(false), 5000);
