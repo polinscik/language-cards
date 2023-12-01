@@ -1,5 +1,4 @@
 import "./Card.scss";
-
 import Button from "../Button/Button";
 import {useState, Fragment, useRef, useEffect} from "react";
 
